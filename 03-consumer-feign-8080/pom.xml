@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.abc</groupId>
-    <artifactId>00-eurekaserver-8000</artifactId>
+    <artifactId>03-consumer-feign-8080</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -21,47 +21,23 @@
     </properties>
 
     <dependencies>
-        <!--JAXB，Java Architechture for Xml Binding，XML绑定的Java技术
-            JDK6、7、8版本的不用导入以下依赖，但9及其以上版本需要导入
-        -->
-        <!--<dependency>-->
-        <!--<groupId>javax.xml.bind</groupId>-->
-        <!--<artifactId>jaxb-api</artifactId>-->
-        <!--<version>2.2.11</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>com.sun.xml.bind</groupId>-->
-        <!--<artifactId>jaxb-core</artifactId>-->
-        <!--<version>2.2.11</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>com.sun.xml.bind</groupId>-->
-        <!--<artifactId>jaxb-impl</artifactId>-->
-        <!--<version>2.2.11</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>javax.activation</groupId>-->
-        <!--<artifactId>activation</artifactId>-->
-        <!--<version>1.1.1</version>-->
-        <!--</dependency>-->
-
+        <!--feign依赖-->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.1.10</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
-        <!--修改MySQL驱动版本-->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.47</version>
-            <scope>runtime</scope>
-        </dependency>
+        <!--actuator依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <!--eureka客户端依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -86,6 +62,7 @@
         </dependencies>
     </dependencyManagement>
 
+
     <build>
         <plugins>
             <plugin>
@@ -94,5 +71,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

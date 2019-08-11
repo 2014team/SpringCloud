@@ -2,53 +2,45 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.abc</groupId>
-    <artifactId>00-eurekaserver-8000</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.7.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+    <groupId>com.abc</groupId>
+    <artifactId>03-provider-8081</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>02-provider-8081</name>
+    <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
+        <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
     </properties>
 
     <dependencies>
-        <!--JAXB，Java Architechture for Xml Binding，XML绑定的Java技术
-            JDK6、7、8版本的不用导入以下依赖，但9及其以上版本需要导入
-        -->
-        <!--<dependency>-->
-        <!--<groupId>javax.xml.bind</groupId>-->
-        <!--<artifactId>jaxb-api</artifactId>-->
-        <!--<version>2.2.11</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>com.sun.xml.bind</groupId>-->
-        <!--<artifactId>jaxb-core</artifactId>-->
-        <!--<version>2.2.11</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>com.sun.xml.bind</groupId>-->
-        <!--<artifactId>jaxb-impl</artifactId>-->
-        <!--<version>2.2.11</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>javax.activation</groupId>-->
-        <!--<artifactId>activation</artifactId>-->
-        <!--<version>1.1.1</version>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.1.10</version>
+        </dependency>
+
+        <!--actuator依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <!--eureka客户端依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
         <!--修改MySQL驱动版本-->
@@ -58,10 +50,7 @@
             <version>5.1.47</version>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -71,6 +60,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
