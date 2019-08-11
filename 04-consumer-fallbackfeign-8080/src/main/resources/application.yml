@@ -1,0 +1,35 @@
+# 在微服务网关zuul中演示时需要该工程的端口号为8090
+server:
+  port: 8080
+
+spring:
+  application:  # 指定微服务对外暴露的名称
+    # 在微服务网关zuul中演示时需要该工程的服务名称如下
+    # name: abcmsc-consumer-depart-8090
+    name: abcmsc-consumer-depart
+
+eureka:
+  client:
+    service-url: # 指定Eureka服务注册中心
+      defaultZone: http://localhost:8000/eureka
+  # defaultZone: http://eureka8100.com:8100/eureka,http://eureka8200.com:8200/eureka,http://eureka8300.com:8300/eureka
+
+# 开启Feign对Hystrix的支持
+feign:
+  hystrix:
+    enabled: true
+
+  client:
+    config:
+      default:
+        connectTimeout: 5000  # 指定Feign连接提供者的超时时限
+        readTimeout: 5000    # 指定Feign从请求到获取提供者响应的超时时限
+
+# Hystrix超时时限
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
