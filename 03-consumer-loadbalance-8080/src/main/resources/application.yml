@@ -6,7 +6,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8000/eureka
-      # defaultZone: http://eureka8100.com:8100/eureka,http://eureka8200.com:8200/eureka,http://eureka8300.com:8300/eureka
+
 feign:
   client:
     config:
@@ -20,7 +20,11 @@ feign:
       min-request-size: 2048   # 指定启用压缩的最小文件大小
     response:
       enabled: true   # 开启对响应的压缩
-# 修改负载均衡策略方式一
-  # abcmsc-provider-depart:   # 要负载均衡的提供者微服务名称
-    #   ribbon:   # 指定要使用的负载均衡策略
-  #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+# 设置服务熔断时限
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000

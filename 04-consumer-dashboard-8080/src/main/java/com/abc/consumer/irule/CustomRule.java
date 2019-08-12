@@ -26,7 +26,7 @@ public class CustomRule implements IRule {
 
     @Override
     public Server choose(Object key) {
-        // 获取所有可用的提供者主机
+        // 获取所有可用的提供者
         List<Server> servers = lb.getReachableServers();
         // 获取所有排除了指定端口号的提供者
         List<Server> availableServers = this.getAvailableServers(servers);
@@ -36,24 +36,22 @@ public class CustomRule implements IRule {
 
     // 获取所有排除了指定端口号的提供者
     private List<Server> getAvailableServers(List<Server> servers) {
-        // 若没有要排除的主机，则返回所有
+        // 若不存在要排除的Server，则直接将所有可用Servers返回
         if(excludePorts == null || excludePorts.size() == 0) {
             return servers;
         }
 
-        // 创建一个集合，用于存放可用的主机
+        // 定义一个集合，用于存放排除了指定端口号的Server
         List<Server> aservers = new ArrayList<>();
-
         for (Server server : servers) {
             boolean flag = true;
-            // 判断当前遍历主机是否是要被排除的主机
             for(Integer port : excludePorts) {
                 if(server.getPort() == port) {
                     flag = false;
                     break;
                 }
             }
-            // 将不被排除的主机存放到集合中
+            // 若flag为false，说明上面的for循环执行了break，说明当前遍历的Server是要排除掉的Server
             if (flag) {
                 aservers.add(server);
             }
@@ -63,7 +61,7 @@ public class CustomRule implements IRule {
 
     // 从剩余的提供者中随机获取可用的提供者
     private Server getAvailableRandomServers(List<Server> availableServers) {
-        // 获取一个[0，availableServers.size())的随机数
+        // 获取一个[0，availableServers.size())的随机整数
         int index = new Random().nextInt(availableServers.size());
         return availableServers.get(index);
     }
