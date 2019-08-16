@@ -1,0 +1,43 @@
+server:
+  port: 9000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+
+spring:
+  application:
+    name: abcmsc-zuul-depart
+
+
+
+ribbon:        #设置ribbon的超时时间小于zuul的超时时间
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
+zuul:
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+    #指定统一的前辍
+  #prefix: /abc
+  routes:
+    # 指定路由规则
+    abcmsc-consumer-depart: /abc012/**
+    # /**：匹配任意多级路径   /abc8080/aaa/bbb/ccc
+    # /* ：仅匹配一级路径      /abc8080/aaa
+    # /? :匹配仅包含一个字符的一级路径  /abc8080/a
+
+  # 屏蔽指定微服务
+  #ignored-services: abcmsc-consumer-depart-8090
+  # 屏蔽所有微服务
+  #ignored-services: "*"
+
+  # 屏蔽指定URI
+  # ignored-patterns: /**/list/**
+
+  # 指定要屏蔽的敏感头信息
+  #sensitive-headers: ["token","Set-Cookie"]
+
+
