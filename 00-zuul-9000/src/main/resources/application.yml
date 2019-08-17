@@ -40,6 +40,6 @@ zuul:
   # ignored-patterns: /**/list/**
 
   # 指定要屏蔽的敏感头信息
-  sensitive-headers: ["token","Set-Cookie"]
+  #sensitive-headers: ["token","Set-Cookie"]
 
 
