@@ -1,0 +1,36 @@
+server:
+  port: 9000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+
+spring:
+  application:
+    name: abcmsc-zuul-depart
+
+zuul:
+  routes:
+    # 指定微服务的路由规则
+    abcmsc-consumer-depart-8080: /abc8080/**
+    abcmsc-consumer-depart-8090: /abc8090/**
+    abcmsc-consumer-depart: /abc012/**
+
+  # 对限流策略进行配置
+  ratelimit:
+    enabled: true   # 开启限流
+    default-policy: # 设置限流策略
+      refresh-interval: 3  # 限流单位时间窗口, 单位秒
+      limit: 3      # 在指定的单位时间窗口内启动限流的限定值
+      quota: 1      # 指定限流的时间窗口数量
+      #
+      # user：针对用户的限流，对单位时间窗内经过该网关的用户数量进行限制
+      # origin：针对客户端IP的限流，对单位时间窗内经过该网关的IP数量进行限制
+      # url：针对请求URL的限流，对单位时间窗内经过该网关的URL数量进行限制
+      type: user,origin,url  # 指定限流查验对象类型
+
+
+
+
+
