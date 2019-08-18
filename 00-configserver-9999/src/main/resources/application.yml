@@ -1,0 +1,15 @@
+server:
+  port: 9999
+
+# 指定当前工程所关联的Git远程库地址
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          #远程服务器
+          uri: https://github.com/2014team/abcmsc-config-center
+          timeout: 10     # 时连接到远程git库的超时限，默认为5秒
+          default-label: master     # 指定要操作的远程git库的分支，默认master
+
+

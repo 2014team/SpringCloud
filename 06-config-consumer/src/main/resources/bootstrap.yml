@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    config:
+      uri: http://configserver.com:9999
+      label: master
+      name: application-consumer-config
+      profile: dev
+
+  application:
+    name: myConsumer
+
