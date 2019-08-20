@@ -6,4 +6,4 @@ spring:
       name: application-provider-config
       profile: dev
   application:
-    name: myProvider
+  name: abcmsc-provider-depart   # 暴露微服务名称

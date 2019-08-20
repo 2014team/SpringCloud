@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    config:
+      uri: http://configserver.com:9999
+      label: master
+      name: application-provider-config
+      profile: dev
+  #应用名称
+  application:
+    name: abcmsc-provider-depart
+
+  #注册kafka
+  kafka:
+    bootstrap-servers: 39.97.176.160:9092
+
+#bus-refresh 监控终端
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+
