@@ -1,0 +1,21 @@
+eureka:
+  client:
+    service-url: # 指定Eureka服务注册中心
+      defaultZone: http://localhost:8000/eureka
+
+spring:
+  application:   # 指定当前微服务对外(提供者)暴露的名称
+    name: abcmsc-stream-kafka
+
+  cloud:
+    stream:
+      kafka:
+        binder:    # 指定Stream所连接的Kafka集群
+          brokers: 39.97.176.160:9092
+          # 指定是否自动创建主题
+          auto-create-topics: true
+
+      bindings:
+        output:  # 将指定主题与类型的消息要写入的管道
+          destination: test
+          content-type: text/plain
