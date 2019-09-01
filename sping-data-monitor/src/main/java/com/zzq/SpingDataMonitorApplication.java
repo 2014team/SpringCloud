@@ -1,14 +1,15 @@
-package com.abc.provider;
+package com.zzq;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication
-@ServletComponentScan(basePackages = {"com.abc.provider.**.config"})
-public class ProviderApplication {
+@ServletComponentScan(basePackages = {"com.zzq.**.servlet"})
+public class SpingDataMonitorApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ProviderApplication.class, args);
+        SpringApplication.run(SpingDataMonitorApplication.class, args);
     }
+
 }
