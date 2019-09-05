@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.abc</groupId>
-    <artifactId>08-spring-cloud-stream-kafka2</artifactId>
+    <artifactId>sping-data-monitor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
