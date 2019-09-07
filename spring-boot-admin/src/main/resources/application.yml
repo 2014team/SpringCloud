@@ -1,0 +1,31 @@
+server:
+  port: 9006
+spring:
+  application:
+    name: admin-server
+  security:
+    user:
+      name: "admin"
+      password: "admin"
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://localhost:8000/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: ${eureka.instance.ip-address}.${server.port}
+    lease-renewal-interval-in-seconds: 3
+    lease-expiration-duration-in-seconds: 10
+    health-check-url-path: /actuator/health
+    metadata-map:
+      user.name: "admin"
+      user.password: "admin"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #监控自身
+  endpoint:
+    health:
+      show-details: ALWAYS
